@@ -1,0 +1,155 @@
+#%RAML 1.0
+title: usersapi
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/ef45cbdf-5d99-4580-a8d8-0287fe2c48b4/api/{version} # baseUri: http://users.capsone.com/api/{version}
+version: v1
+
+
+/users:
+  get:
+    description: get the list of all users
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [{
+                  "id": 1,
+                  "first": "Adam",
+                  "last": "Bob",
+                  "department": "IIB"
+
+                },
+                {
+                  "id": 2,
+                  "first": "Sarem",
+                  "last": "Haile",
+                  "department": "mulesoft"
+                }]
+      404:
+       body:
+          application/json:
+            example:
+              {"messgae":"sorry bad request"}
+              
+      500:
+        body:
+          application/json:
+            example:
+              {"message":"the internal server problem"}
+              
+        
+  post:
+    responses:
+      201:
+        body:
+          application/json:
+             example:
+                {
+            "first": "Adam",
+            "last": "Bob",
+            "department": "IIB"
+             }
+    
+          
+    
+       
+      
+      
+  put:
+    description: update the user data
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+                  [{
+                      "id": 1,
+                      "first": "Adam",
+                      "last": "Bob",
+                      "department": "IIB"
+                    }]
+  
+  /users/{Id}:
+    description: user entity
+    get:
+      description: Get specific user with user Id={userId}
+      queryParameters:
+        userId:
+          type: integer
+          description: Id of the user
+          required: true
+      responses:
+        200:
+          body:
+            application/json:
+               example: |
+                 [{
+                  "userId": 1,
+                  "first name": "Adam",
+                  "last name": "Bob",
+                  "department": "applied matheamthics"
+                  }]
+    put:
+        description: update a single user
+        responses:
+          200:
+            body:
+              application/json:
+                example:
+                  [{
+                      "id": 1,
+                      "first": "Adam",
+                      "last": "Bob",
+                      "department": "IIB"
+                    }]          
+    delete:
+      description: delete a user by id
+      queryParameters:
+        user Id:
+          type: integer
+          description: id of the user 
+          required: true
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {"message": "The user deleted successfully"}
+    
+    
+
+    
+      
+  
+          
+    
+
+    
+                
+   
+      
+  
+
+            
+                
+              
+               
+               
+              
+              
+             
+               
+              
+
+    
+    
+   
+     
+    
+              
+    
+      
+
+  
+ 
+  
